@@ -1,0 +1,84 @@
+find . -iname "*.py" -not -path "./tests/*" | xargs -n1 -I {}  pylint --output-format=colorized {}; true
+[7;33m************* Module queries[0m
+queries.py:8:20: W0621: [35mRedefining name 'db' from outer scope (line 6)[0m ([35mredefined-outer-name[0m)
+queries.py:18:17: R1721: [1;3;35mUnnecessary use of a comprehension, use list(results) instead.[0m ([1;3;35munnecessary-comprehension[0m)
+queries.py:22:25: W0621: [35mRedefining name 'db' from outer scope (line 6)[0m ([35mredefined-outer-name[0m)
+queries.py:36:13: W0621: [35mRedefining name 'db' from outer scope (line 6)[0m ([35mredefined-outer-name[0m)
+queries.py:54:27: W0621: [35mRedefining name 'db' from outer scope (line 6)[0m ([35mredefined-outer-name[0m)
+queries.py:70:27: W0621: [35mRedefining name 'db' from outer scope (line 6)[0m ([35mredefined-outer-name[0m)
+queries.py:72:4: W0107: [35mUnnecessary pass statement[0m ([35munnecessary-pass[0m)
+queries.py:70:27: W0613: [35mUnused argument 'db'[0m ([35munused-argument[0m)
+queries.py:75:38: W0621: [35mRedefining name 'db' from outer scope (line 6)[0m ([35mredefined-outer-name[0m)
+queries.py:77:4: W0107: [35mUnnecessary pass statement[0m ([35munnecessary-pass[0m)
+queries.py:75:38: W0613: [35mUnused argument 'db'[0m ([35munused-argument[0m)
+
+------------------------------------------------------------------
+Your code has been rated at 6.67/10 (previous run: 6.67/10, +0.00)
+
+PYTHONDONTWRITEBYTECODE=1 pytest -v --color=yes
+[1m============================= test session starts ==============================[0m
+platform linux -- Python 3.10.6, pytest-7.1.3, pluggy-1.0.0 -- /home/branchedelac/.pyenv/versions/3.10.6/envs/lewagon/bin/python3.10
+cachedir: .pytest_cache
+rootdir: /home/branchedelac/code/branchedelac/01-Python/03-SQL-Basics/data-sql-queries
+plugins: anyio-3.6.2, asyncio-0.19.0
+asyncio: mode=strict
+[1mcollecting ... [0mcollected 0 items / 6 errors
+
+==================================== ERRORS ====================================
+[31m[1m________________ ERROR collecting tests/test_detailed_movies.py ________________[0m
+[1m[31mtests/test_detailed_movies.py[0m:7: in <module>
+    [94mfrom[39;49;00m [04m[96mqueries[39;49;00m [94mimport[39;49;00m detailed_movies
+[1m[31mqueries.py[0m:79: in <module>
+    top_five_directors_for(db, [33m"[39;49;00m[33mAction,Adventure,Comedy[39;49;00m[33m"[39;49;00m)
+[1m[31mqueries.py[0m:66: in top_five_directors_for
+    db.execute(query, params)
+[1m[31mE   sqlite3.DatabaseError: database disk image is malformed[0m
+[31m[1m_____________ ERROR collecting tests/test_late_released_movies.py ______________[0m
+[1m[31mtests/test_late_released_movies.py[0m:7: in <module>
+    [94mfrom[39;49;00m [04m[96mqueries[39;49;00m [94mimport[39;49;00m late_released_movies
+[1m[31mqueries.py[0m:79: in <module>
+    top_five_directors_for(db, [33m"[39;49;00m[33mAction,Adventure,Comedy[39;49;00m[33m"[39;49;00m)
+[1m[31mqueries.py[0m:66: in top_five_directors_for
+    db.execute(query, params)
+[1m[31mE   sqlite3.DatabaseError: database disk image is malformed[0m
+[31m[1m____________ ERROR collecting tests/test_movie_duration_buckets.py _____________[0m
+[1m[31mtests/test_movie_duration_buckets.py[0m:7: in <module>
+    [94mfrom[39;49;00m [04m[96mqueries[39;49;00m [94mimport[39;49;00m movie_duration_buckets
+[1m[31mqueries.py[0m:79: in <module>
+    top_five_directors_for(db, [33m"[39;49;00m[33mAction,Adventure,Comedy[39;49;00m[33m"[39;49;00m)
+[1m[31mqueries.py[0m:66: in top_five_directors_for
+    db.execute(query, params)
+[1m[31mE   sqlite3.DatabaseError: database disk image is malformed[0m
+[31m[1m___________________ ERROR collecting tests/test_stats_on.py ____________________[0m
+[1m[31mtests/test_stats_on.py[0m:7: in <module>
+    [94mfrom[39;49;00m [04m[96mqueries[39;49;00m [94mimport[39;49;00m stats_on
+[1m[31mqueries.py[0m:79: in <module>
+    top_five_directors_for(db, [33m"[39;49;00m[33mAction,Adventure,Comedy[39;49;00m[33m"[39;49;00m)
+[1m[31mqueries.py[0m:66: in top_five_directors_for
+    db.execute(query, params)
+[1m[31mE   sqlite3.DatabaseError: database disk image is malformed[0m
+[31m[1m____________ ERROR collecting tests/test_top_five_directors_for.py _____________[0m
+[1m[31mtests/test_top_five_directors_for.py[0m:7: in <module>
+    [94mfrom[39;49;00m [04m[96mqueries[39;49;00m [94mimport[39;49;00m top_five_directors_for
+[1m[31mqueries.py[0m:79: in <module>
+    top_five_directors_for(db, [33m"[39;49;00m[33mAction,Adventure,Comedy[39;49;00m[33m"[39;49;00m)
+[1m[31mqueries.py[0m:66: in top_five_directors_for
+    db.execute(query, params)
+[1m[31mE   sqlite3.DatabaseError: database disk image is malformed[0m
+[31m[1m_______ ERROR collecting tests/test_top_five_youngest_newly_directors.py _______[0m
+[1m[31mtests/test_top_five_youngest_newly_directors.py[0m:7: in <module>
+    [94mfrom[39;49;00m [04m[96mqueries[39;49;00m [94mimport[39;49;00m top_five_youngest_newly_directors
+[1m[31mqueries.py[0m:79: in <module>
+    top_five_directors_for(db, [33m"[39;49;00m[33mAction,Adventure,Comedy[39;49;00m[33m"[39;49;00m)
+[1m[31mqueries.py[0m:66: in top_five_directors_for
+    db.execute(query, params)
+[1m[31mE   sqlite3.DatabaseError: database disk image is malformed[0m
+=========================== short test summary info ============================
+ERROR tests/test_detailed_movies.py - sqlite3.DatabaseError: database disk im...
+ERROR tests/test_late_released_movies.py - sqlite3.DatabaseError: database di...
+ERROR tests/test_movie_duration_buckets.py - sqlite3.DatabaseError: database ...
+ERROR tests/test_stats_on.py - sqlite3.DatabaseError: database disk image is ...
+ERROR tests/test_top_five_directors_for.py - sqlite3.DatabaseError: database ...
+ERROR tests/test_top_five_youngest_newly_directors.py - sqlite3.DatabaseError...
+!!!!!!!!!!!!!!!!!!! Interrupted: 6 errors during collection !!!!!!!!!!!!!!!!!!!!
+[31m============================== [31m[1m6 errors[0m[31m in 0.35s[0m[31m ===============================[0m
